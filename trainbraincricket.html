@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="https://cdn.rawgit.com/BrainJS/brain.js/master/browser.js"></script>
+    <script src="data/data_teamsonly.js"></script>
+    <script src="data/data_teamsvenue.js"></script>
+    <script src="data/data_teamsvenuetoss.js"></script>
+    <script src="data/data_teamsvenuetossdecision.js"></script>
+    <script src="trainbraincricket.js"></script>
+</head>
+
+<body>
+    <h2>Train IPL Predictor</h2>
+    <button onclick="startTraining()">Start Training</button><br><br>
+    <h3>Training Stats</h3>
+    <h4>Method 1: Winner based on Teams only</h4>
+    <div id="nnstats_teamsonly">Yet to train</div>
+    <h4>Method 2: Winner based on Teams and Venue</h4>
+    <div id="nnstats_teamsvenue">Yet to train</div>
+    <h4>Method 3: Winner based on Teams, Venue and Toss Winner</h4>
+    <div id="nnstats_teamsvenuetoss">Yet to train</div>
+    <h4>Method 4: Winner based on Teams, Venue, Toss Winner and Toss Decision</h4>
+    <div id="nnstats_teamsvenuetossdecision">Yet to train</div>
+    <hr>
+
+    <h3>Trained Network JSON</h3>
+    <h4>Method 1: Winner based on Teams only</h4>
+    <div id="json_teamsonly">Yet to train</div>
+    <hr>
+    <h4>Method 2: Winner based on Teams and Venue</h4>
+    <div id="json_teamsvenue">Yet to train</div>
+    <hr>
+    <h4>Method 3: Winner based on Teams, Venue and Toss Winner</h4>
+    <div id="json_teamsvenuetoss">Yet to train</div>
+    <hr>
+    <h4>Method 4: Winner based on Teams, Venue, Toss Winner and Toss Decision</h4>
+    <div id="json_teamsvenuetossdecision">Yet to train</div>
+</body>
+
+</html>

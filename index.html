@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <title>CricResult - Using Neural Networks to Predict Match Results</title>
+    <meta name="description" content="CricResult - Using Neural Networks to Predict Match Results - This site uses Neural Networks brain.js library
+        and past IPL Data (all of it) to predict the match winners.">
+    <meta name="keywords" content="cricket, results, machine learning, neural networks, brain.js">
+    <link rel="stylesheet" type="text/css" href="cricresult.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script src="https://cdn.rawgit.com/BrainJS/brain.js/master/browser.js"></script>
+    <script src="net/net_teamsonly.js"></script>
+    <script src="net/net_teamsvenue.js"></script>
+    <script src="net/net_teamsvenuetoss.js"></script>
+    <script src="net/net_teamsvenuetossdecision.js"></script>
+    <script src="results.js"></script>
+</head>
+
+<body>
+    <div style="text-align:center;">
+        <div class="siteheader">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img src="cricresultlogogray.png" width="100px" alt="CricResult"></td>
+                        <td>
+                            <h1>CricResult</h1>
+                            Using Neural Networks to Predict Match Results
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <h2>IPL Predictor</h2>
+        <table cellpadding="10">
+            <tbody>
+                <!-- <tr>
+                    <td colspan="3">Teams</td>
+                </tr> -->
+                <tr>
+                    <td><select id="team1" name="Team 1">
+                            <option value="CSK">CSK</option>
+                            <option value="DC">DC</option>
+                            <option value="KKR">KKR</option>
+                            <option value="KXIP">KXIP</option>
+                            <option value="MI">MI</option>
+                            <option value="RCB">RCB</option>
+                            <option value="RR">RR</option>
+                            <option value="SRH">SRH</option>
+                        </select></td>
+
+                    <td>vs.</td>
+                    <td><select id="team2" name="Team 2">
+                            <option value="CSK">CSK</option>
+                            <option value="DC">DC</option>
+                            <option value="KKR">KKR</option>
+                            <option value="KXIP">KXIP</option>
+                            <option value="MI">MI</option>
+                            <option value="RCB">RCB</option>
+                            <option value="RR">RR</option>
+                            <option value="SRH">SRH</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Venue<br><select id="venue" name="Venue">
+                            <option value="Venue_Bangalore">Bangalore</option>
+                            <option value="Venue_Chennai">Chennai</option>
+                            <option value="Venue_Delhi">Delhi</option>
+                            <option value="Venue_Hyderabad">Hyderabad</option>
+                            <option value="Venue_Jaipur">Jaipur</option>
+                            <option value="Venue_Kolkata">Kolkata</option>
+                            <option value="Venue_Mohali">Mohali</option>
+                            <option value="Venue_Mumbai">Mumbai</option>
+                        </select></td>
+                </tr>
+                <tr>
+
+                    <td>Toss Winner<br><select id="toss" name="Toss">
+                            <option value="Toss_CSK">CSK</option>
+                            <option value="Toss_DC">DC</option>
+                            <option value="Toss_KKR">KKR</option>
+                            <option value="Toss_KXIP">KXIP</option>
+                            <option value="Toss_MI">MI</option>
+                            <option value="Toss_RCB">RCB</option>
+                            <option value="Toss_RR">RR</option>
+                            <option value="Toss_SRH">SRH</option>
+                        </select></td>
+                    <td></td>
+                    <td>Toss Decision<br><select id="tossdecision" name="Toss Decision">
+                            <option value="TossDecision_Bowl">Bowl</option>
+                            <option value="TossDecision_Bat">Bat</option>
+                        </select></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <br> <button onclick="checkresults()">Predict</button><br><br>
+
+        <div id="divresults" style="display:none">
+            <table cellpadding="5">
+                <tbody>
+                    <tr>
+                        <th style="text-align: left">Winner Based On</th>
+                        <th style="text-align: left">Result</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Teams only
+                        </td>
+                        <td style="text-align: left">
+                            <div id="nnresult_teamsonly"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Teams and Venue
+                        </td>
+                        <td style="text-align: left">
+                            <div id="nnresult_teamsvenue"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Teams, Venue and Toss Winner
+                        </td>
+                        <td style="text-align: left">
+                            <div id="nnresult_teamsvenuetoss"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Teams, Venue, Toss Winner and Decision
+                        </td>
+                        <td style="text-align: left">
+                            <div id="nnresult_teamsvenuetossdecision"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sitefooter">
+            <h2>How It Works?</h2>
+            <p>This site has been created for fun and educational purposes.</p>
+            <p>This site uses the wonderful <a href="https://github.com/BrainJS/brain.js" target="_blank">brain.js</a>
+                Neural
+                Networks library
+                and past IPL Data (all of it) to predict the match winners.</p>
+            <p>The code for this site can be found at: <a href="https://github.com/easyitis/cricresult"
+                    target="_blank">https://github.com/easyitis/cricresult</a></p>
+            <p>PREDICTIONS ARE NOT GUARANTEED. WE NEITHER ENCOURAGE GAMBLING NOR DO WE
+                ENCOURAGE THE USE OF THESE PREDICTIONS FOR GAMBLING.</p>
+        </div>
+    </div>
+</body>
+
+</html>
