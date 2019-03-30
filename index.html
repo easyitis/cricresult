@@ -24,8 +24,9 @@
             <table>
                 <tbody>
                     <tr>
-                        <td><img src="cricresultlogogray.png" width="100px" alt="CricResult"></td>
-                        <td>
+                        <td style="vertical-align:middle;"><img src="cricresultlogogray.png" width="100px"
+                                alt="CricResult"></td>
+                        <td style="vertical-align:middle;">
                             <h1>CricResult</h1>
                             Using Neural Networks to Predict Match Results
                         </td>
@@ -79,7 +80,6 @@
                         </select></td>
                 </tr>
                 <tr>
-
                     <td><span class="bluetext">Toss Winner</span><br><select id="tosswinner" name="Toss Winner"
                             onchange="checkInputs()">
                             <option value="Toss_CSK" selected>CSK</option>
@@ -92,49 +92,53 @@
                             <option value="Toss_SRH">SRH</option>
                         </select></td>
                     <td></td>
-                    <td><span class="bluetext">Toss Decision</span><br><select id="tossdecision" name="Toss Decision">
+                    <td><span class="bluetext">Toss Decision</span><br><select id="tossdecision" name="Toss Decision"
+                            onchange="checkInputs()">
                             <option value="TossDecision_Bowl">Bowl</option>
                             <option value="TossDecision_Bat">Bat</option>
                         </select></td>
-
                 </tr>
             </tbody>
         </table>
         <span id="errortext" style="color:red;"></span>
-        <br> <button id="predictbutton" onclick="checkresults()">Predict</button><br><br>
+        <br> <br> <button id="predictprebutton" onclick="checkResultsPreToss();">Predict
+            Pre-Toss</button>&nbsp;<button id="predictpostbutton" onclick="checkResultsPostToss();">Predict
+            Post-Toss</button><br><br>
 
         <div id="divresults" style="display:none">
             <table cellpadding="5">
                 <tbody>
                     <tr>
-                        <th style="text-align: left">Winner Based On</th>
-                        <th style="text-align: left">Result</th>
+                        <th style="text-align: left;">Winner Based On</th>
+                        <th style="text-align: left;">Result</th>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Teams only
+                        <td style="text-align: left;">Teams only
                         </td>
-                        <td style="text-align: left">
+                        <td style="text-align: left;">
                             <div id="nnresult_teamsonly"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Teams and Venue
+                        <td style="text-align: left;">Teams and Venue
                         </td>
-                        <td style="text-align: left">
+                        <td style="text-align: left;">
                             <div id="nnresult_teamsvenue"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Teams, Venue and Toss Winner
+                        <td style="text-align: left;">Teams, Venue and Toss Winner<div id="nnresult_teamsvenuetoss_pre">
+                            </div>
                         </td>
-                        <td style="text-align: left">
+                        <td style="text-align: left;">
                             <div id="nnresult_teamsvenuetoss"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Teams, Venue, Toss Winner and Decision
+                        <td style="text-align: left;">Teams, Venue, Toss Winner and Decision<div
+                                id="nnresult_teamsvenuetossdecision_pre"></div>
                         </td>
-                        <td style="text-align: left">
+                        <td style="text-align: left;">
                             <div id="nnresult_teamsvenuetossdecision"></div>
                         </td>
                     </tr>
