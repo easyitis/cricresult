@@ -10,6 +10,7 @@ body {
 
 td {
     text-align: center;
+    vertical-align: top;
 }
 
 table {
