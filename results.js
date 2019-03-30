@@ -10,6 +10,9 @@ function enableButton(buttonid) {
 
 function checkInputs() {
     document.getElementById("divresults").style.display = "none";
+    document.getElementById("errortext").innerHTML = "";
+    enableButton("predictprebutton");
+    enableButton("predictpostbutton");
     const team1 = document.getElementById("team1").value;
     const team2 = document.getElementById("team2").value;
     const venue = document.getElementById("venue").value.slice(6);
@@ -40,9 +43,6 @@ function checkInputs() {
         disableButton("predictpostbutton");
         return false;
     }
-    document.getElementById("errortext").innerHTML = "";
-    enableButton("predictprebutton");
-    enableButton("predictpostbutton");
     return true;
 };
 
@@ -77,6 +77,7 @@ function checkResultsPreToss() {
     const string_teamsvenuetoss1bat = '{"' + team1 + '": 1,"' + team2 + '": 1,"' + venue + '": 1,"' + "Toss_" + team1 + '": 1,"' + "TossDecision_Bat" + '": 1}';
     const string_teamsvenuetoss2bowl = '{"' + team1 + '": 1,"' + team2 + '": 1,"' + venue + '": 1,"' + "Toss_" + team2 + '": 1,"' + "TossDecision_Bowl" + '": 1}';
     const string_teamsvenuetoss2bat = '{"' + team1 + '": 1,"' + team2 + '": 1,"' + venue + '": 1,"' + "Toss_" + team2 + '": 1,"' + "TossDecision_Bat" + '": 1}';
+
     document.getElementById("nnresult_teamsvenuetossdecision_pre").innerHTML =
         "&nbsp;&nbsp;If " + team1 + " win toss and bowl: <strong>" + brain.likely(JSON.parse(string_teamsvenuetoss1bowl), net_teamsvenuetossdecision) + "</strong><br>" +
         "&nbsp;&nbsp;If " + team1 + " win toss and bat:  <strong>" + brain.likely(JSON.parse(string_teamsvenuetoss1bat), net_teamsvenuetossdecision) + "</strong><br>" +
