@@ -1,6 +1,7 @@
 function disablePredictButton() {
     document.getElementById("predictbutton").disabled = true;
     document.getElementById("predictbutton").style.backgroundColor = "gray";
+    document.getElementById("divresults").style.display = "none";
 };
 
 function enablePredictButton() {
