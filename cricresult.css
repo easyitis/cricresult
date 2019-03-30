@@ -1,3 +1,8 @@
+:root {
+    --blue-color: #2567fc;
+    --lightblue-color: #00007f;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0px;
@@ -22,16 +27,41 @@ h2 {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #efefef;
-    position: -webkit-sticky;
-    /* Safari */
-    position: sticky;
-    /* box-shadow: 0 1px 2px 0 rgba(255,255,255,0.2); */
-    box-shadow: 0 4px 8px 0 var(--title-box-shadow);
-    z-index: 999;
 }
 
 .sitefooter {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #efefef;
+}
+
+select {
+    background-color: var(--blue-color);
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8em;
+    outline: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--lightblue-color);
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    outline: none;
+    border-radius: 5px;
+}
+
+
+.bluetext {
+    color: var(--blue-color);
 }
