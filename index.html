@@ -42,8 +42,8 @@
                     <td colspan="3">Teams</td>
                 </tr> -->
                 <tr>
-                    <td><select id="team1" name="Team 1">
-                            <option value="CSK">CSK</option>
+                    <td><select id="team1" name="Team 1" onchange="checkInputs()">
+                            <option value="CSK" selected>CSK</option>
                             <option value="DC">DC</option>
                             <option value="KKR">KKR</option>
                             <option value="KXIP">KXIP</option>
@@ -53,10 +53,10 @@
                             <option value="SRH">SRH</option>
                         </select></td>
 
-                    <td>vs.</td>
-                    <td><select id="team2" name="Team 2">
+                    <td><span class="bluetext">vs.</span></td>
+                    <td><select id="team2" name="Team 2" onchange="checkInputs()">
                             <option value="CSK">CSK</option>
-                            <option value="DC">DC</option>
+                            <option value="DC" selected>DC</option>
                             <option value="KKR">KKR</option>
                             <option value="KXIP">KXIP</option>
                             <option value="MI">MI</option>
@@ -66,9 +66,10 @@
                         </select></td>
                 </tr>
                 <tr>
-                    <td colspan="3">Venue<br><select id="venue" name="Venue">
+                    <td colspan="3"><span class="bluetext">Venue</span><br><select id="venue" name="Venue"
+                            onchange="checkInputs()">
                             <option value="Venue_Bangalore">Bangalore</option>
-                            <option value="Venue_Chennai">Chennai</option>
+                            <option value="Venue_Chennai" selected>Chennai</option>
                             <option value="Venue_Delhi">Delhi</option>
                             <option value="Venue_Hyderabad">Hyderabad</option>
                             <option value="Venue_Jaipur">Jaipur</option>
@@ -79,8 +80,9 @@
                 </tr>
                 <tr>
 
-                    <td>Toss Winner<br><select id="toss" name="Toss">
-                            <option value="Toss_CSK">CSK</option>
+                    <td><span class="bluetext">Toss Winner</span><br><select id="tosswinner" name="Toss Winner"
+                            onchange="checkInputs()">
+                            <option value="Toss_CSK" selected>CSK</option>
                             <option value="Toss_DC">DC</option>
                             <option value="Toss_KKR">KKR</option>
                             <option value="Toss_KXIP">KXIP</option>
@@ -90,7 +92,7 @@
                             <option value="Toss_SRH">SRH</option>
                         </select></td>
                     <td></td>
-                    <td>Toss Decision<br><select id="tossdecision" name="Toss Decision">
+                    <td><span class="bluetext">Toss Decision</span><br><select id="tossdecision" name="Toss Decision">
                             <option value="TossDecision_Bowl">Bowl</option>
                             <option value="TossDecision_Bat">Bat</option>
                         </select></td>
@@ -98,8 +100,8 @@
                 </tr>
             </tbody>
         </table>
-
-        <br> <button onclick="checkresults()">Predict</button><br><br>
+        <span id="errortext" style="color:red;"></span>
+        <br> <button id="predictbutton" onclick="checkresults()">Predict</button><br><br>
 
         <div id="divresults" style="display:none">
             <table cellpadding="5">
